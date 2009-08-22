@@ -28,9 +28,13 @@ namespace IEquatableReference
 
         public override int GetHashCode()
         {
-            //Int32 doesn't need .GetHashCode()
-            //bitwise XOR operator yields an uniform distribution and avoids arithmetic overflows
-            return this.First ^ this.Second.GetHashCode();
+            // Avoids arithmetic overflows
+            unchecked
+            {
+                //Int32 doesn't need .GetHashCode()
+                return (31 * this.First)
+                    + this.Second.GetHashCode();
+            }
         }
 
         public static bool operator ==(ValuesClass valuesClassA, ValuesClass valuesClassB)
