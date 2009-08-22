@@ -232,5 +232,22 @@ namespace IEquatableReferenceTest
             var actual = targets.Distinct().Count();
             Assert.AreEqual(expected, actual);
         }
+
+        /// <summary>
+        ///A test for Equals object : Properties are equal
+        ///</summary>
+        [TestMethod()]
+        public void EqualsObjectEqualPropertiesTest()
+        {
+            var targets = new object[] 
+            {
+                new ValuesClass()
+                ,
+                new ValuesClass()
+            };
+            var expected = true;
+            var actual = targets[0].Equals(targets[1]);
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
