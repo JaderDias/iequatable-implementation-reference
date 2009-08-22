@@ -28,7 +28,8 @@ namespace IEquatableReference
 
         public override int GetHashCode()
         {
-            return this.First.GetHashCode() ^ this.Second.GetHashCode();
+            //this.First doesn't need .GetHashCode()
+            return this.First ^ this.Second.GetHashCode();
         }
 
         public static bool operator ==(ValuesClass valuesClassA, ValuesClass valuesClassB)
