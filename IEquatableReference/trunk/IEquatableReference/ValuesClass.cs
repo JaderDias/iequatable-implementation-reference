@@ -14,6 +14,7 @@ namespace IEquatableReference
 
         public bool Equals(ValuesClass other)
         {
+            if (ReferenceEquals(null, other)) return false;
             return (this.First.Equals(other.First))
                 && (this.Second.Equals(other.Second));
         }
