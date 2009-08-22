@@ -14,8 +14,8 @@ namespace IEquatableReference
 
         public bool Equals(ValuesClass other)
         {
-            return this.First.Equals(other.First)
-                && this.Second.Equals(other.Second);
+            return (this.First.Equals(other.First))
+                && (this.Second.Equals(other.Second));
         }
 
         #endregion
