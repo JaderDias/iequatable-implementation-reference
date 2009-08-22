@@ -21,6 +21,11 @@ namespace IEquatableReference
 
         #endregion
 
+        public override int GetHashCode()
+        {
+            return this.First.GetHashCode() ^ this.Second.GetHashCode();
+        }
+
         public static bool operator ==(ValuesClass valuesClassA, ValuesClass valuesClassB)
         {
             return valuesClassA.Equals(valuesClassB);
