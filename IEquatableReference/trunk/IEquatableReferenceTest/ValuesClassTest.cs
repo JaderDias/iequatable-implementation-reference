@@ -166,6 +166,23 @@ namespace IEquatableReferenceTest
         }
 
         /// <summary>
+        ///A test for operator == : Null equality
+        ///</summary>
+        [TestMethod()]
+        public void EqualityOperatorNullEqualityTest()
+        {
+            var targets = new ValuesClass[] 
+            {
+                null
+                ,
+                null
+            };
+            var expected = true;
+            var actual = targets[0] == targets[1];
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
         ///A test for operator == : Null unequality
         ///</summary>
         [TestMethod()]
@@ -212,6 +229,23 @@ namespace IEquatableReferenceTest
                 new ValuesClass() { First = 1 }
             };
             var expected = true;
+            var actual = targets[0] != targets[1];
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for operator != : Null Equality
+        ///</summary>
+        [TestMethod()]
+        public void UnequalityOperatorNullEqualityTest()
+        {
+            var targets = new ValuesClass[] 
+            {
+                null
+                ,
+                null
+            };
+            var expected = false;
             var actual = targets[0] != targets[1];
             Assert.AreEqual(expected, actual);
         }
