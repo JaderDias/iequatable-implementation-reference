@@ -234,10 +234,10 @@ namespace IEquatableReferenceTest
         }
 
         /// <summary>
-        ///A test for Equals object : Properties are equal
+        ///A test for Equals object : Equality
         ///</summary>
         [TestMethod()]
-        public void EqualsObjectEqualPropertiesTest()
+        public void EqualsObjectEqualityTest()
         {
             var targets = new object[] 
             {
@@ -246,6 +246,40 @@ namespace IEquatableReferenceTest
                 new ValuesClass()
             };
             var expected = true;
+            var actual = targets[0].Equals(targets[1]);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for Equals object : Properties unequality
+        ///</summary>
+        [TestMethod()]
+        public void EqualsObjectPropertiesUnequalityTest()
+        {
+            var targets = new object[] 
+            {
+                new ValuesClass() { First = 1 }
+                ,
+                new ValuesClass()
+            };
+            var expected = false;
+            var actual = targets[0].Equals(targets[1]);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for Equals object : Type unequality
+        ///</summary>
+        [TestMethod()]
+        public void EqualsObjectTypeUnequalityTest()
+        {
+            var targets = new object[] 
+            {
+                new ValuesClass()
+                ,
+                0d
+            };
+            var expected = false;
             var actual = targets[0].Equals(targets[1]);
             Assert.AreEqual(expected, actual);
         }

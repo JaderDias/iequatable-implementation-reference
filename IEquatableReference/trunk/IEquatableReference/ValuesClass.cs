@@ -23,7 +23,7 @@ namespace IEquatableReference
 
         public override bool Equals(object obj)
         {
-            return true;
+            return this.Equals(obj as ValuesClass);
         }
 
         public override int GetHashCode()
