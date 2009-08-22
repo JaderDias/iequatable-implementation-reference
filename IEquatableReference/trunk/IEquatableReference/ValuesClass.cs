@@ -33,11 +33,13 @@ namespace IEquatableReference
 
         public static bool operator ==(ValuesClass valuesClassA, ValuesClass valuesClassB)
         {
+            if (ReferenceEquals(null, valuesClassA)) return false;
             return valuesClassA.Equals(valuesClassB);
         }
 
         public static bool operator !=(ValuesClass valuesClassA, ValuesClass valuesClassB)
         {
+            if (ReferenceEquals(null, valuesClassA)) return true;
             return !valuesClassA.Equals(valuesClassB);
         }
     }
