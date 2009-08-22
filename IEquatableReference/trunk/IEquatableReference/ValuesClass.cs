@@ -21,6 +21,11 @@ namespace IEquatableReference
 
         #endregion
 
+        public override bool Equals(object obj)
+        {
+            return true;
+        }
+
         public override int GetHashCode()
         {
             return this.First.GetHashCode() ^ this.Second.GetHashCode();
