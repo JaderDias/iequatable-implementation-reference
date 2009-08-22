@@ -77,5 +77,21 @@ namespace IEquatableReferenceTest
             var actual = targets[0].Equals(targets[1]);
             Assert.AreEqual(expected, actual);
         }
+
+        /// <summary>
+        ///A test for Equals : Parameter is null
+        ///</summary>
+        [TestMethod()]
+        public void EqualsNullTest()
+        {
+            var targets = new ValuesClass[] 
+            {
+                new ValuesClass(),
+                null
+            };
+            var expected = false;
+            var actual = targets[0].Equals(targets[1]);
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
