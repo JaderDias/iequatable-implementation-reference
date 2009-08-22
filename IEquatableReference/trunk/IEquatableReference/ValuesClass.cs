@@ -20,5 +20,15 @@ namespace IEquatableReference
         }
 
         #endregion
+
+        public static bool operator ==(ValuesClass valuesClassA, ValuesClass valuesClassB)
+        {
+            return valuesClassA.Equals(valuesClassB);
+        }
+
+        public static bool operator !=(ValuesClass valuesClassA, ValuesClass valuesClassB)
+        {
+            return !valuesClassA.Equals(valuesClassB);
+        }
     }
 }
