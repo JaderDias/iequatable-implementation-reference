@@ -3,8 +3,8 @@ using IEquatableReference;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace IEquatableReferenceTest
 {
-    
-    
+
+
     /// <summary>
     ///This is a test class for ValuesClassTest and is intended
     ///to contain all ValuesClassTest Unit Tests
@@ -71,10 +71,45 @@ namespace IEquatableReferenceTest
         {
             var targets = new ValuesClass[] 
             {
-                new ValuesClass() { First = 0, Second = 0d },
-                new ValuesClass() { First = 0, Second = 0d }
+                new ValuesClass()
+                ,
+                new ValuesClass()
             };
             var expected = true;
+            var actual = targets[0].Equals(targets[1]);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for Equals : First properties are unequal
+        ///</summary>
+        [TestMethod()]
+        public void EqualsUnequalFirstPropertiesTest()
+        {
+            var targets = new ValuesClass[] 
+            {
+                new ValuesClass()
+                ,
+                new ValuesClass() { First = 1 }
+            };
+            var expected = false;
+            var actual = targets[0].Equals(targets[1]);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for Equals : Second properties are unequal
+        ///</summary>
+        [TestMethod()]
+        public void EqualsUnequalSecondPropertiesTest()
+        {
+            var targets = new ValuesClass[] 
+            {
+                new ValuesClass()
+                ,
+                new ValuesClass() { Second = 1d }
+            };
+            var expected = false;
             var actual = targets[0].Equals(targets[1]);
             Assert.AreEqual(expected, actual);
         }
@@ -96,15 +131,16 @@ namespace IEquatableReferenceTest
         }
 
         /// <summary>
-        ///A test for operator == : Properties equality
+        ///A test for operator == : Equality
         ///</summary>
         [TestMethod()]
-        public void EqualityOperatorEqualPropertiesTest()
+        public void EqualityOperatorEqualityTest()
         {
             var targets = new ValuesClass[] 
             {
-                new ValuesClass() { First = 0, Second = 0d },
-                new ValuesClass() { First = 0, Second = 0d }
+                new ValuesClass()
+                ,
+                new ValuesClass()
             };
             var expected = true;
             var actual = targets[0] == targets[1];
@@ -112,17 +148,52 @@ namespace IEquatableReferenceTest
         }
 
         /// <summary>
-        ///A test for operator != : Properties equality
+        ///A test for operator == : Unequality
         ///</summary>
         [TestMethod()]
-        public void UnequalityOperatorEqualPropertiesTest()
+        public void EqualityOperatorUnequalityTest()
         {
             var targets = new ValuesClass[] 
             {
-                new ValuesClass() { First = 0, Second = 0d },
-                new ValuesClass() { First = 0, Second = 0d }
+                new ValuesClass()
+                ,
+                new ValuesClass() { First = 1 }
             };
             var expected = false;
+            var actual = targets[0] == targets[1];
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for operator != : Equality
+        ///</summary>
+        [TestMethod()]
+        public void UnequalityOperatorEqualityTest()
+        {
+            var targets = new ValuesClass[] 
+            {
+                new ValuesClass()
+                ,
+                new ValuesClass()
+            };
+            var expected = false;
+            var actual = targets[0] != targets[1];
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for operator != : Unequality
+        ///</summary>
+        [TestMethod()]
+        public void UnequalityOperatorUnequalityTest()
+        {
+            var targets = new ValuesClass[] 
+            {
+                new ValuesClass()
+                ,
+                new ValuesClass() { First = 1 }
+            };
+            var expected = true;
             var actual = targets[0] != targets[1];
             Assert.AreEqual(expected, actual);
         }
