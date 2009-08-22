@@ -29,7 +29,7 @@ namespace IEquatableReference
         public override int GetHashCode()
         {
             //Int32 doesn't need .GetHashCode()
-            //bitwise XOR operator is chosen to achieve uniform distribution and to avoid arithmetic overflow
+            //bitwise XOR operator yields an uniform distribution and avoids arithmetic overflows
             return this.First ^ this.Second.GetHashCode();
         }
 
