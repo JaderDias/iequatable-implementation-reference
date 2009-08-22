@@ -1,4 +1,5 @@
-﻿using IEquatableReference;
+﻿using System.Linq;
+using IEquatableReference;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace IEquatableReferenceTest
 {
@@ -66,7 +67,7 @@ namespace IEquatableReferenceTest
         ///A test for Equals : Properties are equal
         ///</summary>
         [TestMethod()]
-        public void EqualPropertiesTest()
+        public void EqualsEqualPropertiesTest()
         {
             var targets = new ValuesClass[] 
             {
@@ -82,7 +83,7 @@ namespace IEquatableReferenceTest
         ///A test for Equals : Parameter is null
         ///</summary>
         [TestMethod()]
-        public void EqualsNullTest()
+        public void EqualsEqualsNullTest()
         {
             var targets = new ValuesClass[] 
             {
@@ -91,6 +92,38 @@ namespace IEquatableReferenceTest
             };
             var expected = false;
             var actual = targets[0].Equals(targets[1]);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for operator == : Properties equality
+        ///</summary>
+        [TestMethod()]
+        public void EqualityOperatorEqualPropertiesTest()
+        {
+            var targets = new ValuesClass[] 
+            {
+                new ValuesClass() { First = 0, Second = 0d },
+                new ValuesClass() { First = 0, Second = 0d }
+            };
+            var expected = true;
+            var actual = targets[0] == targets[1];
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for operator != : Properties equality
+        ///</summary>
+        [TestMethod()]
+        public void UnequalityOperatorEqualPropertiesTest()
+        {
+            var targets = new ValuesClass[] 
+            {
+                new ValuesClass() { First = 0, Second = 0d },
+                new ValuesClass() { First = 0, Second = 0d }
+            };
+            var expected = false;
+            var actual = targets[0] != targets[1];
             Assert.AreEqual(expected, actual);
         }
     }
