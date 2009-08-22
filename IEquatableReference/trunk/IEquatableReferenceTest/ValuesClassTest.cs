@@ -122,7 +122,8 @@ namespace IEquatableReferenceTest
         {
             var targets = new ValuesClass[] 
             {
-                new ValuesClass(),
+                new ValuesClass()
+                ,
                 null
             };
             var expected = false;
@@ -195,6 +196,40 @@ namespace IEquatableReferenceTest
             };
             var expected = true;
             var actual = targets[0] != targets[1];
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for GetHashCode : Equality
+        ///</summary>
+        [TestMethod()]
+        public void GetHashCodeEqualityTest()
+        {
+            var targets = new ValuesClass[] 
+            {
+                new ValuesClass()
+                ,
+                new ValuesClass()
+            };
+            var expected = 1;
+            var actual = targets.Distinct().Count();
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for GetHashCode : Unequality
+        ///</summary>
+        [TestMethod()]
+        public void GetHashCodeUnequalityTest()
+        {
+            var targets = new ValuesClass[] 
+            {
+                new ValuesClass()
+                ,
+                new ValuesClass() { First = 1 }
+            };
+            var expected = 2;
+            var actual = targets.Distinct().Count();
             Assert.AreEqual(expected, actual);
         }
     }
