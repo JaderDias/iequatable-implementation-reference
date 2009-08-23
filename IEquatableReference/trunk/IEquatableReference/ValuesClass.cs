@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace IEquatableReference
 {
@@ -28,10 +25,8 @@ namespace IEquatableReference
 
         public override int GetHashCode()
         {
-            // Avoids arithmetic overflows
             unchecked
             {
-                //Int32 doesn't need .GetHashCode()
                 return (31 * this.First)
                     + this.Second.GetHashCode();
             }
@@ -49,3 +44,55 @@ namespace IEquatableReference
         }
     }
 }
+
+//    public bool Equals(ValuesClass other)
+//    {
+//        if (ReferenceEquals(null, other)) return false;
+//        // The Refactor plugin suggests the following line, but it is optional:
+//        //    if (ReferenceEquals(this, other)) return true;
+//        return (this.First.Equals(other.First))
+//            && (this.Second.Equals(other.Second));
+//    }
+
+//    public override int GetHashCode()
+//    {
+//        // Avoids arithmetic overflows
+//        unchecked
+//        {
+//            // Int32 doesn't need .GetHashCode()
+//            return (31 * this.First)
+//                + this.Second.GetHashCode();
+//            // The full Josh Bloch's suggestion (as in his Effective Java book) implementation would be:
+//            //return (37 * ((37 * 17) + this.First)) + this.Second.GetHashCode();
+//        }
+
+//        // The solution with least collision probability would be:
+//        //return ((this.First << 16) | (this.First >> 16)) ^ this.Second.GetHashCode();
+
+//        // Generalized as:
+//        //return GetHashCode(new object[] { this.First, this.Second });
+//    }
+
+//    // where:
+//    //const int NumberOfBits = 32;
+//    //Int32 GetHashCode(object[] properties)
+//    //{
+//    //    var offset = NumberOfBits / properties.Length;
+//    //    return properties
+//    //        .Select((property, index) => new { hash = property.GetHashCode(), index })
+//    //        .Aggregate(0, (hash, item) => hash ^= (item.hash << (offset * item.index)) | (item.hash << (NumberOfBits - (offset * item.index))));
+//    //}
+
+//    public static bool operator ==(ValuesClass valuesClassA, ValuesClass valuesClassB)
+//    {
+//        if (ReferenceEquals(null, valuesClassA)) return ReferenceEquals(null, valuesClassB);
+//        return valuesClassA.Equals(valuesClassB);
+
+//        // Since double.NaN.Equals(double.NaN) is true
+//        // and   double.NaN   ==   double.NaN  is false
+//        // we could also implement this as:
+//        //if (ReferenceEquals(null, other)) return false;
+//        //return (this.First.Equals(other.First))
+//        //    && (this.Second == other.Second);
+//        // Where it differs from the Equals implementation in the last line
+//    }
