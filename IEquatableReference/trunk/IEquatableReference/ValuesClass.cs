@@ -67,10 +67,11 @@ namespace IEquatableReference
 //        }
 
 //        // The solution with least collision probability would be:
-//        //return ((this.First << 16) | (this.First >> 16)) ^ this.Second.GetHashCode();
+//        //     return ((this.First << 16) | (this.First >> 16)) ^ this.Second.GetHashCode();
+//        // this code only isn't cleaner because C# lacks a bitwise rotate operator
 
 //        // Generalized as:
-//        //return GetHashCode(new object[] { this.First, this.Second });
+//        //     return GetHashCode(new object[] { this.First, this.Second });
 //    }
 
 //    // where:
