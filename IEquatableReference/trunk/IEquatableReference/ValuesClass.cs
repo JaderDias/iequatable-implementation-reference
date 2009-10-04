@@ -27,7 +27,7 @@ namespace IEquatableReference
         {
             unchecked
             {
-                return (31 * this.First)
+                return (-1521134295 * this.First)
                     + this.Second.GetHashCode();
             }
         }
@@ -60,11 +60,15 @@ namespace IEquatableReference
 //        unchecked
 //        {
 //            // Int32 doesn't need .GetHashCode()
-//            return (31 * this.First)
+//            return (-1521134295 * this.First)
 //                + this.Second.GetHashCode();
-//            // The full Josh Bloch's suggestion (as in his Effective Java book) implementation would be:
-//            //return (37 * ((37 * 17) + this.First)) + this.Second.GetHashCode();
 //        }
+
+//           // C# 3.0 anon types are implemented as follows:
+//           //int num = -1134271262;
+//           //num = (-1521134295 * num) + this.First.GetHashCode();
+//           //return ((-1521134295 * num) + this.Second.GetHashCode());
+
 
 //        // The solution with least collision probability would be:
 //        //     return ((this.First << 16) | (this.First >> 16)) ^ this.Second.GetHashCode();
