@@ -34,7 +34,7 @@ namespace IEquatableReference
 
         public override string ToString()
         {
-            return String.Format("{{ A = {0}, B = {1} }}"
+            return String.Format("{{ First = {0}, Second = {1} }}"
                 , this.First
                 , this.Second
                 );
