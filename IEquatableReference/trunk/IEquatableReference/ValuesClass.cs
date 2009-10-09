@@ -32,6 +32,14 @@ namespace IEquatableReference
             }
         }
 
+        public override string ToString()
+        {
+            return String.Format("{{ A = {0}, B = {1} }}"
+                , this.First
+                , this.Second
+                );
+        }
+
         public static bool operator ==(ValuesClass valuesClassA, ValuesClass valuesClassB)
         {
             if (ReferenceEquals(null, valuesClassA)) return ReferenceEquals(null, valuesClassB);
