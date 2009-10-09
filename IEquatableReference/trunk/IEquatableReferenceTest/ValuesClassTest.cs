@@ -336,6 +336,22 @@ namespace IEquatableReferenceTest
         }
 
         /// <summary>
+        ///A test for ToString
+        ///</summary>
+        [TestMethod()]
+        public void ToStringTest()
+        {
+            var target = new ValuesClass()
+            {
+                First = 1,
+                Second = 2d
+            };
+            var expected = "{ First = 1, Second = 2 }";
+            var actual = target.ToString();
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
         ///A test for Equals object : Type unequality
         ///</summary>
         [TestMethod()]
