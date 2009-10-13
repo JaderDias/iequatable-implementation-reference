@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace IEquatableReference
 {
@@ -35,8 +36,8 @@ namespace IEquatableReference
         public override string ToString()
         {
             return String.Format("{{ First = {0}, Second = {1} }}"
-                , this.First
-                , this.Second
+                , this.First.ToString(CultureInfo.InvariantCulture)
+                , this.Second.ToString(CultureInfo.InvariantCulture)
                 );
         }
 
