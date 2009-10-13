@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using IEquatableReference;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Globalization;
+using System.Threading;
 namespace IEquatableReferenceTest
 {
 
@@ -344,9 +346,27 @@ namespace IEquatableReferenceTest
             var target = new ValuesClass()
             {
                 First = 1,
-                Second = 2d
+                Second = 5d
             };
             var expected = "{ First = 1, Second = 2 }";
+            var actual = target.ToString();
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for ToString
+        ///</summary>
+        [TestMethod()]
+        public void ToStringTestOtherCulture()
+        {
+            Thread.CurrentThread.CurrentCulture = (CultureInfo)CultureInfo.InvariantCulture.Clone();
+            Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator = ",";
+            var target = new ValuesClass()
+            {
+                First = 1,
+                Second = 2.5d
+            };
+            var expected = "{ First = 1, Second = 2.5 }";
             var actual = target.ToString();
             Assert.AreEqual(expected, actual);
         }
