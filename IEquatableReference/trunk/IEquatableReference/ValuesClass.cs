@@ -41,15 +41,15 @@ namespace IEquatableReference
                 );
         }
 
-        public static bool operator ==(ValuesClass valuesClassA, ValuesClass valuesClassB)
+        public static bool operator ==(ValuesClass leftOperand, ValuesClass rightOperand)
         {
-            if (ReferenceEquals(null, valuesClassA)) return ReferenceEquals(null, valuesClassB);
-            return valuesClassA.Equals(valuesClassB);
+            if (ReferenceEquals(null, leftOperand)) return ReferenceEquals(null, rightOperand);
+            return leftOperand.Equals(rightOperand);
         }
 
-        public static bool operator !=(ValuesClass valuesClassA, ValuesClass valuesClassB)
+        public static bool operator !=(ValuesClass leftOperand, ValuesClass rightOperand)
         {
-            return !(valuesClassA == valuesClassB);
+            return !(leftOperand == rightOperand);
         }
     }
 }
