@@ -348,7 +348,7 @@ namespace IEquatableReferenceTest
                 First = 1,
                 Second = 5d
             };
-            var expected = "{ First = 1, Second = 2 }";
+            var expected = "{ First = 1, Second = 5 }";
             var actual = target.ToString();
             Assert.AreEqual(expected, actual);
         }
