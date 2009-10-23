@@ -35,7 +35,9 @@ namespace IEquatableReference
 
         public override string ToString()
         {
-            return String.Format("{{ First = {0}, Second = {1} }}"
+            return String.Format(
+                  CultureInfo.CurrentCulture
+                , "{{ First = {0}, Second = {1} }}"
                 , this.First.ToString(CultureInfo.InvariantCulture)
                 , this.Second.ToString(CultureInfo.InvariantCulture)
                 );
