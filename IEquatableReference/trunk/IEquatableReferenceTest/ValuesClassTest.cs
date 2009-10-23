@@ -1,8 +1,8 @@
-﻿using System.Linq;
+﻿using System.Globalization;
+using System.Linq;
+using System.Threading;
 using IEquatableReference;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Globalization;
-using System.Threading;
 namespace IEquatableReferenceTest
 {
 
