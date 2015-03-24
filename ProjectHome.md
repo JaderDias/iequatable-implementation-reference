@@ -1,0 +1,1 @@
+Provides .NET's IEquatable implementation examples
